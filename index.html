@@ -4,74 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Soma de Áreas</title>
+    
     <style>
-        /* O CSS torna a página mais agradável */
+        /* --- ESTILO CSS: MODO ESCURO + DETALHES VERMELHOS --- */
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f9;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
+            /* Usando uma fonte de sistema moderna */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #121212; /* Fundo escuro principal */
+            color: #e0e0e0; /* Texto claro (não totalmente branco) */
+            
+            /* Centraliza a caixa na tela */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            background-color: #1e1e1e; /* Fundo do "card" */
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            border: 1px solid #333; /* Borda sutil do card */
+        }
+
         h1 {
-            color: #333;
-            border-bottom: 2px solid #007bff;
+            color: #ffffff;
+            border-bottom: 2px solid #dc3545; /* DETALHE VERMELHO */
             padding-bottom: 10px;
-            margin-bottom: 20px;
+            margin-top: 0;
+            font-size: 1.8em;
+            text-align: center;
         }
+
+        p {
+            text-align: center;
+            color: #888; /* Texto de instrução mais suave */
+            margin-bottom: 25px;
+        }
+
         .forma {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #2a2a2a; /* Fundo das seções de input */
+            border-radius: 8px;
+            border: 1px solid #444;
         }
+
+        .forma h2 {
+            margin-top: 0;
+            color: #e53935; /* DETALHE VERMELHO (um pouco mais vivo) */
+            border-bottom: 1px solid #444;
+            padding-bottom: 8px;
+        }
+
         label {
             display: block;
-            margin-top: 8px;
+            margin-top: 12px;
             font-weight: bold;
+            color: #ccc;
         }
+
         input[type="number"] {
-            width: calc(100% - 10px);
-            padding: 8px;
-            margin-top: 4px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            width: calc(100% - 22px); /* 100% menos padding e borda */
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #555;
+            background-color: #333; /* Fundo do input */
+            color: #f0f0f0; /* Texto do input */
+            border-radius: 5px;
+            font-size: 1em;
         }
+
+        /* Destaca o input quando focado */
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #dc3545; /* DETALHE VERMELHO */
+            box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.3);
+        }
+
         button {
-            background-color: #007bff;
+            background-color: #dc3545; /* DETALHE VERMELHO (cor principal) */
             color: white;
-            padding: 10px 15px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            margin-top: 20px;
-            font-size: 16px;
+            margin-top: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            width: 100%;
+            
+            /* Transição suave */
+            transition: background-color 0.3s ease, transform 0.1s ease;
         }
+
         button:hover {
-            background-color: #0056b3;
+            background-color: #c82333; /* VERMELHO mais escuro no hover */
         }
+
+        button:active {
+            transform: scale(0.98); /* Efeito de clique */
+        }
+
         #resultado-area {
             margin-top: 25px;
-            padding: 15px;
-            background-color: #e9ecef;
-            border-radius: 4px;
-            font-size: 1.2em;
+            padding: 20px;
+            background-color: #2a2a2a; /* Mesmo fundo das seções */
+            border-radius: 8px;
+            font-size: 1.3em;
             font-weight: bold;
-            color: #28a745;
+            text-align: center;
+            border: 1px dashed #dc3545; /* DETALHE VERMELHO (borda tracejada) */
+            color: #ccc; /* Cor do texto "Área Total:" */
         }
+
+        #resultado-area span {
+            color: #ff5c5c; /* DETALHE VERMELHO (cor viva para o número) */
+            font-size: 1.2em;
+            margin-left: 8px;
+        }
+
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>📐 Calculadora de Soma de Áreas</h1>
-    <p>Insira as dimensões abaixo para calcular a Área Total (Retângulo + Círculo).</p>
+    <p>Insira as dimensões para calcular a Área Total.</p>
 
     <div class="forma">
         <h2>Retângulo</h2>
@@ -91,16 +157,15 @@
     <button onclick="calcularSoma()">Calcular Área Total</button>
 
     <div id="resultado-area">
-        Área Total: <span id="resultado">0.00</span>
+        Área Total:<span id="resultado">0.00</span>
     </div>
 
 </div>
 
 <script>
-    // As funções de cálculo (tradução do Python para JavaScript)
+    // --- Lógica JavaScript (sem alterações) ---
 
     function areaRetangulo(largura, altura) {
-        // Verifica se os valores são válidos (números positivos)
         if (largura <= 0 || altura <= 0 || isNaN(largura) || isNaN(altura)) {
             return 0;
         }
@@ -108,37 +173,25 @@
     }
 
     function areaCirculo(raio) {
-        // Verifica se o valor é válido (número positivo)
         if (raio <= 0 || isNaN(raio)) {
             return 0;
         }
-        return Math.PI * Math.pow(raio, 2); // Math.PI é o Pi em JS
+        return Math.PI * Math.pow(raio, 2);
     }
 
     function calcularSoma() {
-        // 1. Pega os valores dos campos de entrada
-        // Usamos parseFloat para garantir que sejam números
         const l = parseFloat(document.getElementById('largura').value);
         const a = parseFloat(document.getElementById('altura').value);
         const r = parseFloat(document.getElementById('raio').value);
 
-        // 2. Calcula as áreas individuais
         const area1 = areaRetangulo(l, a);
         const area2 = areaCirculo(r);
-
-        // 3. Soma as áreas
         const areaTotal = area1 + area2;
 
-        // 4. Exibe o resultado na tag <span> com o id="resultado"
-        // toFixed(2) formata o número para duas casas decimais
         document.getElementById('resultado').textContent = areaTotal.toFixed(2);
-        
-        // Opcional: Mostra as áreas parciais no console do navegador
-        console.log(`Área Retângulo: ${area1.toFixed(2)}`);
-        console.log(`Área Círculo: ${area2.toFixed(2)}`);
     }
 
-    // Chama a função uma vez para exibir o cálculo inicial (com os valores padrão)
+    // Calcula o valor inicial ao carregar a página
     calcularSoma(); 
 </script>
 
