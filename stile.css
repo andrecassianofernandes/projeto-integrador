@@ -1,0 +1,112 @@
+/* --- INÍCIO DO NOVO ESTILO CSS (MODO ESCURO) --- */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #121212; /* Fundo escuro principal */
+    color: #f0f0f0; /* Texto claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #1e1e1e; /* Fundo do "card" */
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
+}
+
+h1 {
+    color: #ffffff;
+    border-bottom: 2px solid #007bff; /* Cor de destaque (azul) */
+    padding-bottom: 10px;
+    margin-top: 0;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+.forma {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #2a2a2a; /* Fundo das seções */
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+.forma h2 {
+    margin-top: 0;
+    color: #0099ff;
+    border-bottom: 1px solid #444;
+    padding-bottom: 8px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    color: #ccc;
+}
+
+input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #555;
+    background-color: #333; /* Fundo do input */
+    color: #f0f0f0; /* Texto do input */
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    transform: scale(0.98); /* Efeito de clique */
+}
+
+#resultado-area {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    border: 1px dashed #007bff;
+}
+
+#resultado-area span {
+    color: #33ff99; /* Cor de destaque verde para o resultado */
+    font-size: 1.2em;
+}
+
+/* --- FIM DO NOVO ESTILO CSS --- */
